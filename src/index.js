@@ -1,6 +1,8 @@
 import mapboxgl from "mapbox-gl";
-import myMapbox from "./private/mapbox.js";
-import geojson from "./private/geojson.js";
+import { default as myMapbox } from "./private/mapbox.js";
+import { default as familyMarkers } from "./private/familyTrips.js";
+import { default as adultMarkers } from "./private/adultTrips.js";
+import { default as residences } from "./private/residences.js";
 
 import mapPage from "./index.html";
 import css from "./map.css";
@@ -14,6 +16,30 @@ var map = new mapboxgl.Map({
   zoom: 3.75
 });
 
-map.on("load", function() {
-  map.addLayer(geojson.geojson);
+function placeMarkers(marker, tripType) {
+  // create a HTML element for each feature
+  var el = document.createElement("div");
+  el.className = "marker";
+  el.classList.add("fas");
+
+  if (tripType === "adult") {
+    el.classList.add("fa-map-marker-alt");
+  } else if (tripType === "family") {
+    el.classList.add("fa-car-side");
+  } else {
+    el.classList.add("fa-home");
+  }
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
+}
+
+familyMarkers.geojson.features.forEach(function(element) {
+  placeMarkers(element, "family");
+});
+adultMarkers.geojson.features.forEach(function(element) {
+  placeMarkers(element, "adult");
+});
+residences.geojson.features.forEach(function(element) {
+  placeMarkers(element, "residence");
 });

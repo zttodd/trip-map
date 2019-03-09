@@ -10,20 +10,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(html)$/,
+        test: /\.(html|css|svg|png|jpg|gif)$/,
         use: [
           {
             loader: "file-loader",
-            options: { name: "index.html" }
-          }
-        ]
-      },
-      {
-        test: /\.(css)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: { name: "map.css" }
+            options: { name: "[name].[ext]" }
           }
         ]
       },
