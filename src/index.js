@@ -2,7 +2,6 @@ import mapboxgl from "mapbox-gl";
 import { default as myMapbox } from "./private/mapbox.js";
 import { default as familyMarkers } from "./private/familyTrips.js";
 import { default as adultMarkers } from "./private/adultTrips.js";
-import { default as residences } from "./private/residences.js";
 
 import mapPage from "./index.html";
 import css from "./map.css";
@@ -26,8 +25,6 @@ function placeMarkers(marker, tripType) {
     el.classList.add("fa-map-marker-alt");
   } else if (tripType === "family") {
     el.classList.add("fa-car-side");
-  } else {
-    el.classList.add("fa-home");
   }
 
   // make a marker for each feature and add to the map
@@ -39,7 +36,4 @@ familyMarkers.geojson.features.forEach(function(element) {
 });
 adultMarkers.geojson.features.forEach(function(element) {
   placeMarkers(element, "adult");
-});
-residences.geojson.features.forEach(function(element) {
-  placeMarkers(element, "residence");
 });
