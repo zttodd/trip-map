@@ -1,0 +1,30 @@
+{
+  "name": "trip-map",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "file-loader": "^3.0.1",
+    "mapbox-gl": "^0.53.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  },
+  "scripts": {
+    "start": "npm run webpack",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zttodd/trip-map.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zttodd/trip-map/issues"
+  },
+  "homepage": "https://github.com/zttodd/trip-map#readme"
+}
